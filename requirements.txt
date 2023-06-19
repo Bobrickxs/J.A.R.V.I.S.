@@ -1,0 +1,5 @@
+SpeachRecognition
+pyAudio
+gTTS
+
+pyttsx3
