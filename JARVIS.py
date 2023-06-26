@@ -21,7 +21,7 @@ talk('Hi, can i help you?')
 
 def command():
     r = sr.Recognizer()
-    with sr.Microphone as source:
+    with sr.Microphone() as source:
         print('Say')
         r.pause_threshold = 1
         r.adjust_for_ambient_noise(source, duration=1)
@@ -45,4 +45,4 @@ def make_something(task):
         webbrowser.open(url)
 
 while True:
-    make_something()
+    make_something(command())
