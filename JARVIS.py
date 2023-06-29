@@ -24,11 +24,11 @@ def command():
     with sr.Microphone() as source:
         print('Say')
         r.pause_threshold = 1
-        r.adjust_for_ambient_noise(source, duration=1)
+        #r.adjust_for_ambient_noise(source, duration=1)
         audio = r.listen(source)
 
     try:
-        task = r.recognize_google(audio,language='ua-UA').lower()
+        task = r.recognize_google(audio,language='en-US').lower()
         print(task)
     except sr.UnknownValueError:
         talk('Я вас не зрозумів')
@@ -39,7 +39,7 @@ def command():
 
 
 def make_something(task):
-    if 'Відкрити сайт' in task:
+    if 'open site' in task:
         talk('Відкриваю')
         url = 'https://it-univer.thecabinet.io/profile/account_myorders/ '
         webbrowser.open(url)
