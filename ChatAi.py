@@ -19,8 +19,9 @@ def handle_input(user_input):
         model="gpt-3.5-turbo", messages=[{"role": "user", "content": user_input}])
     return completion
 
-print(handle_input("user_input"))
+#print(handle_input("user_input"))
 
-# while True:
-#     user_input = input("You: ")
-#     ai_response = handle_input(user_input)
+while True:
+    user_input = input("You: ")
+    ai_response = handle_input(user_input).choices[0].message.content
+    print(ai_response)

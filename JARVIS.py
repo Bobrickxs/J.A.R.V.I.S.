@@ -4,9 +4,24 @@ import speech_recognition as sr
 import sys
 import os
 import pyttsx3
-
-
 engine = pyttsx3.init()
+
+import openai
+
+from dotenv import load_dotenv as ld
+
+dotenv_path = os.path.join(os.path.dirname(__file__), ".env")
+if os.path.exists(dotenv_path):
+    ld(dotenv_path)
+
+openai.api_key = os.getenv("api_key")
+
+def handle_input(user_input):
+    completion = openai.ChatCompletion.create(
+        model="gpt-3.5-turbo", messages=[{"role": "user", "content": user_input}])
+    return completion
+
+
 
 
 
@@ -43,6 +58,15 @@ def make_something(task):
         talk('Відкриваю')
         url = 'https://it-univer.thecabinet.io/profile/account_myorders/ '
         webbrowser.open(url)
+    elif "ім'я" and "твоє" in task:
+        talk("My name`s JARVIS")
+
+    elif "стоп" in task:
+        talk("Good buy")
+        sys.exit()
+    else:
+        ai_response = handle_input(task).choices[0].message.content
+        talk(ai_response)
 
 while True:
     make_something(command())
