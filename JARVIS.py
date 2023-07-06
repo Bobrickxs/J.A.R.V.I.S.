@@ -65,8 +65,16 @@ def make_something(task):
         talk("Good buy")
         sys.exit()
     else:
-        ai_response = handle_input(task).choices[0].message.content
-        talk(ai_response)
+        try:
+            ai_response = handle_input(task).choices[0].message.content
+            talk(ai_response)
+        except openai.error.ServiceUnavailableError:
+            talk("Sorry, I am going to try again")
+            try:
+                ai_response = handle_input(task).choices[0].message.content
+                talk(ai_response)
+            except openai.error.ServiceUnavailableError:
+                talk("Sorry, can you give me the new task?")
 
 while True:
     make_something(command())
