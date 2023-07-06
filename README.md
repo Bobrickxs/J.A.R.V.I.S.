@@ -1,2 +1,2 @@
 # J.A.R.V.I.S.
-Курс «Розроблення AI-помічника J.A.R.V.I.S. на Python» — це захоплююча можливість для дітей розкрити свій потенціал у світі штучного інтелекту та програмування, створивши персонального AI-помічника — J.A.R.V.I.S..
+Course "Development of AI-assistant J.A.R.V.I.S. on Python" is an exciting opportunity for children to reveal their potential in the world of artificial intelligence and programming by creating a personal AI assistant - J.A.R.V.I.S..
